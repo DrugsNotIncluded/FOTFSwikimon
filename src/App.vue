@@ -6,13 +6,18 @@ const mcurl = "https://api.minetools.eu/ping/ForgedSeas.cubed.pro/25565";
 let date = new Date();
 let timestring = ""
 
+const godsList = ["GodlyCupOfTea", "Sakura_Eby" ,"SakuraEby"];
+
 const serverData = ref(false)
 
 
 async function populateServerData() {
     await axios.get(mcurl)
     .then(function (response) {
-      serverData.value = response.data
+      let temp_data = response.data
+      let filtered = temp_data.players.sample.filter(player => !godsList.includes(player.name))
+      temp_data.players.sample = filtered
+      serverData.value = temp_data
     })
 }
 
@@ -61,7 +66,9 @@ onMounted(async () => {
         <template v-if="serverData.players != null">
           <div class="alert alert-success"> {{ timestring }} Players online:</div>
           <ul class="list-group">
-            <li class="list-group-item" v-for="player in serverData.players.sample">{{ player.name }}</li>
+            <li class="list-group-item" v-for="player in serverData.players.sample">
+              {{ player.name }}
+            </li>
           </ul>
         </template>
         <template v-if='serverData.error != null'>
