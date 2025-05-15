@@ -61,7 +61,7 @@ onMounted(async () => {
           </div>
         </div>
         
-        <div class="col-md-auto">
+        <div class="col-md-auto" style="width: 30rem">
           <body>
             <template v-if="serverData.players != null">
               <div class="alert alert-success"> {{ timestring }} Players online:</div>
@@ -76,7 +76,7 @@ onMounted(async () => {
             </template>
           </body>
         </div>
-        <div class="col">
+        <div class="col-md-auto">
         </div>
       </div>
   </div>
