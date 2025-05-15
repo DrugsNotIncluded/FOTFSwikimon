@@ -6,7 +6,7 @@ const mcurl = "https://api.minetools.eu/ping/ForgedSeas.cubed.pro/25565";
 let date = new Date();
 let timestring = ""
 
-const godsList = ["GodlyCupOfTea", "Sakura_Eby" ,"SakuraEby"];
+const godsList = ["GodlyCupOfTea"];
 
 const serverData = ref(false)
 
